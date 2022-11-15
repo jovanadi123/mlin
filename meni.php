@@ -17,6 +17,7 @@
           <nav>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="index.php">Napici</a></li>
+              <li><a href="preporuka.php">Preporuka</a></li>
               <li><a href="administracija.php">Administracija</a></li>
             </ul>
           </nav>
