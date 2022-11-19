@@ -15,42 +15,26 @@ class Napitak {
 
 	public function save() {
 
-		$naziv = $this->mysqli->escape(trim($_POST['naziv']));
-		$cena = $this->mysqli->escape(trim($_POST['cena']));
-		$vrsta = $this->mysqli->escape(trim($_POST['vrsta']));
-		$kategorija = $this->mysqli->escape(trim($_POST['kategorija']));
+		$naziv = $this->mysqli->real_escape_string(trim($_POST['naziv']));
+		$cena = $this->mysqli->real_escape_string(trim($_POST['cena']));
+		$vrsta = $this->mysqli->real_escape_string(trim($_POST['vrsta']));
+		$kategorija = $this->mysqli->real_escape_string(trim($_POST['kategorija']));
 
-		$data = Array (
-				"naziv" => $naziv,
-				"cena" => $cena,
-				"vrstaID" => $vrsta,
-				"kategorijaID" => $kategorija
-		);
-
-
-		$this->mysqli->insert('napitak', $data);
+		$this->mysqli->query("INSERT INTO napitak(naziv,cena,vrstaID,kategorijaID) VALUES ('$naziv', $cena, $vrsta, $kategorija) ");
 		return true;
 
 	}
 
 	public function update($id) {
 
-		$cena = $this->mysqli->escape(trim($_POST['cena']));
-
-		$data = Array ($cena, $id);
-
-
-		$this->mysqli->rawQuery('update napitak set cena=? where napitakID = ?', $data);
+		$cena = $this->mysqli->real_escape_string(trim($_POST['cena']));
+		$this->mysqli->query("UPDATE napitak SET cena=$cena WHERE napitakID = $id");
 		return true;
 
 	}
 	public function delete($id) {
 
-
-		$data = Array ($id);
-
-
-		$this->mysqli->rawQuery('delete from napitak where napitakID = ?', $data);
+		$this->mysqli->query("DELETE FROM napitak WHERE napitakID = $id");
 		return true;
 
 	}

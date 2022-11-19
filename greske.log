@@ -1,0 +1,5 @@
+[19-Nov-2022 12:34:50 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli::escape() in C:\xampp\htdocs\mlin\napitakModel.php:18
+Stack trace:
+#0 C:\xampp\htdocs\mlin\add.php(6): Napitak->save()
+#1 {main}
+  thrown in C:\xampp\htdocs\mlin\napitakModel.php on line 18
